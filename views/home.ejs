@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO List</title>
+        <link rel="styleSheet" href="css/home.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        
+    </head>
+    <body>
+       
+        <div id="ll">
+            <div id="part">
+                <div id="header">
+                    <div class="header_div"><h1>TODO App</h1></div>
+                </div>
+
+                <div id="form_bar">
+                    <form action="/add" method="POST">
+                        <div id="des_bar">
+                            <label for="desc">DESCRIPTION</label><br>
+                            <textarea type="text" id="desc" name="description" placeholder="What to you need to do?" required></textarea>
+                        </div>
+
+                        <div id="Two_input">
+                            <div id="one">
+                                <label for="cate">CATEGORY</label><br>
+                                <select id="cate" name="coption">
+                                    <option value=" ">Choose a Category</option>
+                                    <option value="PERSONAL">Personal</option>
+                                    <option value="SCHOOL">School</option>
+                                    <option value="CLEANING">Cleaning</option>
+                                    <option value="WORK">Work</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
+                            <div id="two">
+                                <label for="dat">DUE DATE</label><br>
+                                <input type="date" id="dat" name="deadline" required> 
+                            </div>
+                        </div>
+
+                        <div id="btn">
+                            <div class="btn1">
+                                <div><button><i class="fas fa-plus "></i>ADD TASK</button></div>
+                                <div><a href="/delete/?arr="><div id="btn2"><div class="button2"><i class="fas fa-trash-alt"></i>Delete Tasks</div></div></a></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="lists">
+                    <ul id="uldir">
+                    <% for(i of TodoList) { %>
+                        <li type="none">
+                        <div class="lists_sub">
+                            <div class="lists_sub_one">
+                                <div><input type="checkbox" id='<%=i._id%>' class="incr" onclick="del()"></div>
+                                <div class="lists_sub_one_info"><p><%= i.description%></p><p>&nbsp;<i class="fas fa-calendar-alt" ></i>&nbsp;<%=i.deadline%></p></div>
+                            </div>
+                            <div class="lists_sub_two" id="chan" style="background-color:white"><div class="bts"><span><%= i.coption%></span></div></div>
+                            
+                        </div>
+                    </li>        
+                    <%}%>
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <script src="script/home.js"></script>
+    </body>
+</html>
