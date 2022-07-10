@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose=require('mongoose');
 
-mongoose.connect(`mongodb+srv://Amangarg:Amangarg102@cluster0.qfknkyf.mongodb.net/?retryWrites=true&w=majority`);
+mongoose.connect(process.env.MONGODB_URL || `mongodb://localhost:27017/${process.env.DATABASE}`);
 
 const db=mongoose.connection
 
